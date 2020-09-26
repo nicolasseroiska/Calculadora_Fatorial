@@ -14,23 +14,23 @@ public class Calculadora {
 	//---------------------------------------------parte_permutação-----------------------------------------------//
 	
 	public void permutacao() {
-		int n;
-		int multiplicaoFatRepetido = 1;
+		long n;
+		long multiplicaoFatRepetido = 1;
 		
 		System.out.println("Digite o valor à ser calculado: \n");
 		n = sc.nextInt();
 		
 		System.out.println("Ha elementos que se repetem? 1-Sim 2-Nao\n"); //
-		int rpq = sc.nextInt();
+		long rpq = sc.nextInt();
 	
 		if( rpq == 1) 
 		{
 			System.out.println("Digite quantos elementos se repetem: \n");
-			int qtElementoRepete = sc.nextInt();
+			long qtElementoRepete = sc.nextInt();
 	
 			for(int i = 1 ; i <= qtElementoRepete; i++) {
 				System.out.printf("\nDigite quantas vezes se repete o %dº elemento: \n", i);
-				int repVezes = sc.nextInt();
+				long repVezes = sc.nextInt();
 				multiplicaoFatRepetido = multiplicaoFatRepetido * fatorial(repVezes);
 			}// fim for
 			
@@ -44,8 +44,8 @@ public class Calculadora {
 		System.out.println("Retornando ao menu...\n");
 	} // fim metodo - log_permutacao
 
-	public void calculoPermutacao(int n, int multiplicaoFatRepetido) {//calcula permutacao
-		int permuta;
+	public void calculoPermutacao(long n, long multiplicaoFatRepetido) {//calcula permutacao
+		long permuta;
 	    permuta = fatorial(n) / multiplicaoFatRepetido;
 	    
 	    System.out.println("-------------------------------");
@@ -59,7 +59,7 @@ public class Calculadora {
 	//--------------------------------------------parte_arranjo------------------------------------------------//
 
 	public void arranjo() {
-		int n, p;
+		long n, p;
 		
 		System.out.println("Digite o valor de n em fatorial: \n");
 		n = sc.nextInt();
@@ -77,8 +77,8 @@ public class Calculadora {
 		
 	} // fim metodo - log_arranjo
 
-	public void calculoArranjo(int n, int p) { //calcula arranjo
-		int arranjo;
+	public void calculoArranjo(long n, long p) { //calcula arranjo
+		long arranjo;
 	    arranjo = fatorial(n) / fatorial(p);  // 
 	
 		System.out.println("O resultado do Arranjo eh: " + arranjo);
@@ -88,7 +88,7 @@ public class Calculadora {
 	//--------------------------------parte_combinação------------------------------------------//
 	
 	public void combinacao() {
-		int n, p;
+		long n, p;
 		
 		System.out.println("Digite o valor de n em fatorial: \n");
 		n = sc.nextInt();
@@ -105,9 +105,10 @@ public class Calculadora {
 		System.out.println("-------------------------------");
 	} // fim metodo - log_arranjo
 
-	public void calculoCombinacao(int n, int p) { //calcula combinacao
-		int combinacao;
-	    combinacao = fatorial(n) / fatorial(p) * (fatorial(n) - fatorial(p));  // 
+	public void calculoCombinacao(long n, long p) { //calcula combinacao
+		long combinacao, res_sub;
+		res_sub = n - p; //subtração feita no divisor para depois acrescentar o fatorial
+	    combinacao = fatorial(n) / (fatorial(p) * fatorial(res_sub)); 
 	
 		System.out.println("O resultado da combinação eh: " + combinacao);
 		
@@ -118,10 +119,10 @@ public class Calculadora {
 	
 	
 	//calculo do fatorial de um número - metodo interativo
-	public int fatorial(int n) {
+	public long fatorial(long n) {
 		
 		
-		int fatorial = 1;
+		long fatorial = 1;
 		
 		if ( n == 1)
 			return 1;
